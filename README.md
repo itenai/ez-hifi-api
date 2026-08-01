@@ -1,4 +1,3 @@
-```markdown
 # ez-hifi-api
 
 <p align="center">Tidal Music Proxy with Dual Token Support (V1 + V2)</p>
@@ -23,7 +22,7 @@
 - [💡 Examples](#-examples)
 - [⚠️ Troubleshooting](#️-troubleshooting)
 
----
+
 
 ## ✨ Features
 
