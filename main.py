@@ -698,12 +698,9 @@ async def authed_get_json_v1(
 @app.get("/")
 async def index():
     return {
-        "version": API_VERSION,
-        "Repo": "https://github.com/binimum/hifi-api",
-        "v1_token_file": TOKEN_FILE_V1,
-        "v2_token_file": TOKEN_FILE_V2,
-        "v1_endpoints": "/track/, /download/, /album/, /playlist/, /search/, /artist/, /cover/, /lyrics/, /recommendations/, /mix/, /video/, /topvideos/, /artist/similar/, /album/similar/",
-        "v2_endpoints": "/trackv2/, /downloadv2/, /downloadv2/link/"
+        "Version": API_VERSION,
+        "Repo": "https://github.com/itenai/ez-hifi-api",
+        "Message": "Thanks for using the api enjoy and star if ya can"
     }
 
 @app.get("/track/")
