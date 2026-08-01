@@ -4,7 +4,7 @@
 
 ### *Tidal Music Proxy with Dual Token Support (V1 + V2)*
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![FFmpeg](https://img.shields.io/badge/FFmpeg-Enabled-007800?style=for-the-badge&logo=ffmpeg&logoColor=white)](https://ffmpeg.org/)
 
