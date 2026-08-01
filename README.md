@@ -15,8 +15,9 @@
   <a href="#-features">Features</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-authentication">Authentication</a> •
-  <a href="#-v1-vs-v2">V1 vs V2</a> •
-  <a href="#-api-endpoints">API Endpoints</a> •
+  <a href="#-v1-vs-v2-comparison">V1 vs V2</a> •
+  <a href="#-v1-endpoints-tokenjson">V1 Endpoints</a> •
+  <a href="#-v2-endpoints-token_hifijson">V2 Endpoints</a> •
   <a href="#-configuration">Configuration</a> •
   <a href="#-examples">Examples</a> •
   <a href="#-troubleshooting">Troubleshooting</a>
@@ -42,12 +43,12 @@
 
 ## ✨ Features
 
-- 🔑 **Dual Token Engine:** Supports both **V1** (DASH manifests, full account scope) and **V2** (Direct HiFi stream URLs) simultaneously.
-- ⚡ **Unified Authentication:** Interactive Auth Wizard with support for built-in credentials and automatic public Gist credential pools.
-- 🛡️ **Anonymity & Anti-Detection:** Per-request User-Agent rotation simulating a pool of 14+ Android devices alongside continuous proxy health checks.
-- 🎼 **Auto Audio Processing:** Seamless `FFmpeg` integration for automatic M4A-to-FLAC conversion and multi-segment DASH manifest stitching.
-- 🔓 **DRM License Proxying:** Built-in proxy engine handling Widevine DRM requests for protected high-tier streams.
-- 🚀 **High-Throughput Pooling:** Optimized keepalive HTTP connection pools handling up to 500 parallel sockets with automated exponential retries.
+* 🔑 **Dual Token Engine:** Supports both **V1** (DASH manifests, full account scope) and **V2** (Direct HiFi stream URLs) simultaneously.
+* ⚡ **Unified Authentication:** Interactive Auth Wizard with support for built-in credentials and automatic public Gist credential pools.
+* 🛡️ **Anonymity & Anti-Detection:** Per-request User-Agent rotation simulating a pool of 14+ Android devices alongside continuous proxy health checks.
+* 🎼 **Auto Audio Processing:** Seamless `FFmpeg` integration for automatic M4A-to-FLAC conversion and multi-segment DASH manifest stitching.
+* 🔓 **DRM License Proxying:** Built-in proxy engine handling Widevine DRM requests for protected high-tier streams.
+* 🚀 **High-Throughput Pooling:** Optimized keepalive HTTP connection pools handling up to 500 parallel sockets with automated exponential retries.
 
 ---
 
@@ -109,11 +110,8 @@ The unified script tidal_auth.py combines all client workflows into a single ent
 | **Quality Control** | 🎯 Strict (Exact requested quality) | 🚀 Auto-Upgrades to HI_RES_LOSSLESS |
 | **DASH Manifest Support** | ✅ Yes (Stitches segments) | ❌ No (Direct downloads only) |
 | **Processing Speed** | Moderate (Manifest processing required) | ⚡ Fast (Instant direct link generation) |
-## 📥 API Endpoints
-<details open>
-<summary><b>📥 V1 Endpoints (token.json)</b></summary>
-<br />
-#### 🎵 Track & Metadata
+## 📥 V1 Endpoints (token.json)
+### 🎵 Track & Metadata
 | Endpoint | Method | Query Parameters | Description |
 |---|---|---|---|
 | /track/ | GET | id, quality, immersiveaudio | Get track playback info |
@@ -121,7 +119,7 @@ The unified script tidal_auth.py combines all client workflows into a single ent
 | /trackManifests/ | GET | id, formats | Fetch DASH manifests |
 | /recommendations/ | GET | id | Get related track recommendations |
 | /lyrics/ | GET | id | Get synced or static lyrics |
-#### 🔍 Search & Discovery
+### 🔍 Search & Discovery
 | Endpoint | Method | Query Parameters | Description |
 |---|---|---|---|
 | /search/ | GET | s, a, al, v, p, i | Search tracks (s), artists (a), albums (al), videos (v), playlists (p), or ISRC (i) |
@@ -131,7 +129,7 @@ The unified script tidal_auth.py combines all client workflows into a single ent
 | /artist/similar/ | GET | id, cursor | Get similar artists |
 | /album/similar/ | GET | id, cursor | Get similar albums |
 | /mix/ | GET | id | Get mix contents |
-#### 🖼️ Media, DRM & Downloads
+### 🖼️ Media, DRM & Downloads
 | Endpoint | Method | Query Parameters | Output Format |
 |---|---|---|---|
 | /cover/ | GET | id or q | Cover Art Image |
@@ -146,11 +144,7 @@ The unified script tidal_auth.py combines all client workflows into a single ent
 | /download/link/album/ | GET | id, quality | JSON with album track URLs |
 | /download/link/playlist/ | GET | id, quality, limit | JSON with playlist track URLs |
 | /download/link/multi/ | GET | ids, quality | JSON with multiple track URLs |
-</details>
-<br />
-<details>
-<summary><b>📥 V2 Endpoints (token_hifi.json)</b></summary>
-<br />
+## 📥 V2 Endpoints (token_hifi.json)
 > ℹ️ *V2 uses Tidal's direct stream URL backend. It is optimized for maximum download speed and direct audio access.*
 > 
 | Endpoint | Method | Query Parameters | Response Format |
@@ -166,42 +160,30 @@ The unified script tidal_auth.py combines all client workflows into a single ent
 | /downloadv2/link/album/ | GET | id, quality | JSON (Album URLs) |
 | /downloadv2/link/playlist/ | GET | id, quality, limit | JSON (Playlist URLs) |
 | /downloadv2/link/multi/ | GET | ids, quality | JSON (Multiple Track URLs) |
-</details>
 ## 🔧 Configuration
 Configure environment variables inside the .env file located in the root directory:
 ```env
-# ==========================================
-# 🔑 Token File Configuration
-# ==========================================
+# Token File Configuration
 TOKEN_FILE_V1=token.json
 TOKEN_FILE_V2=token_hifi.json
 
-# ==========================================
-# 🌐 Localization
-# ==========================================
+# Localization
 COUNTRY_CODE=US
 
-# ==========================================
-# 🛡️ Proxy Settings
-# ==========================================
+# Proxy Settings
 USE_PROXIES=False
 PROXIES_FILE=proxies.txt
 ROTATE_PROXIES_ON_REFRESH=False
 FALLBACK_TO_DIRECT_CONNECTION=False
 
-# ==========================================
-# ⚙️ Connection & Debug Controls
-# ==========================================
+# Connection & Debug Controls
 MAX_RETRIES=2
 DEV_MODE=False
 USER_AGENT=
 
 ```
-<br />
-<details>
-<summary><b>📄 Proxy File Structure (proxies.txt)</b></summary>
-<br />
-Define proxies line-by-line using standard format strings:
+### 📄 Proxy File Format (proxies.txt)
+Define proxies line-by-line in proxies.txt:
 ```text
 http://user:pass@hostname:port
 https://user:pass@hostname:port
@@ -209,9 +191,8 @@ socks5://user:pass@hostname:port
 http://hostname:port
 
 ```
-</details>
 ## 💡 Examples
-#### 🎵 Single Track Download
+### 🎵 Single Track Download
 ```bash
 # V1 Download (Strict Quality Match)
 curl -O "http://localhost:8000/download/?id=495566820&quality=LOSSLESS"
@@ -220,7 +201,7 @@ curl -O "http://localhost:8000/download/?id=495566820&quality=LOSSLESS"
 curl -O "http://localhost:8000/downloadv2/?id=495566820&quality=LOSSLESS"
 
 ```
-#### 📦 Batch & Archive Downloads
+### 📦 Batch & Archive Downloads
 ```bash
 # Download Full Album as ZIP (V1)
 curl -O "http://localhost:8000/download/album/?id=123456789&quality=LOSSLESS"
@@ -233,7 +214,7 @@ curl -O "http://localhost:8000/download/multi/?ids=123,456,789&quality=LOSSLESS"
 curl -O "http://localhost:8000/download/multi/?ids=123+456+789&quality=LOSSLESS"
 
 ```
-#### 🔗 Extract Direct Stream Links (JSON)
+### 🔗 Extract Direct Stream Links (JSON)
 ```bash
 # Single Track Direct Link
 curl "http://localhost:8000/download/link/?id=495566820&quality=LOSSLESS"
@@ -242,7 +223,7 @@ curl "http://localhost:8000/download/link/?id=495566820&quality=LOSSLESS"
 curl "http://localhost:8000/download/link/album/?id=123456789&quality=LOSSLESS"
 
 ```
-#### 🔍 Discovery & Metadata Queries
+### 🔍 Discovery & Metadata Queries
 ```bash
 # Search for tracks by name
 curl "http://localhost:8000/search/?s=Daft%20Punk&limit=10"
@@ -269,13 +250,13 @@ curl "http://localhost:8000/trackv2/check/?id=495566820"
 ## 📁 File Structure
 ```text
 ez-hifi-api/
-├── 📄 main.py              # Main API server application
-├── 🔐 tidal_auth.py        # Unified token generator & auth wizard
-├── 🔑 token.json           # V1 API credentials
-├── 🔑 token_hifi.json      # V2 API credentials
-├── 🌐 proxies.txt          # Proxy addresses configuration
-├── ⚙️ .env                 # Environment variables file
-└── 📋 requirements.txt     # Python package dependencies
+├── main.py              # Main API server application
+├── tidal_auth.py        # Unified token generator & auth wizard
+├── token.json           # V1 API credentials
+├── token_hifi.json      # V2 API credentials
+├── proxies.txt          # Proxy addresses configuration
+├── .env                 # Environment variables file
+└── requirements.txt     # Python package dependencies
 
 ```
 ## 📝 Additional Notes
