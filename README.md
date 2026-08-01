@@ -7,7 +7,6 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![FFmpeg](https://img.shields.io/badge/FFmpeg-Enabled-007800?style=for-the-badge&logo=ffmpeg&logoColor=white)](https://ffmpeg.org/)
-[![License](https://img.shields.io/badge/License-Educational-FF6B6B?style=for-the-badge)](#-license)
 
 <br />
 
@@ -37,44 +36,18 @@
 
 ## 📌 Overview
 
-**ez-hifi-api** is an enhanced fork of [`binimum/hifi-api`](https://github.com/binimum/hifi-api) (originally based on [`sachinsenal0x64/hifi`](https://github.com/sachinsenal0x64/hifi)). It bridges standard client capabilities with high-performance proxy features, enabling direct lossy and lossless audio extraction with minimal overhead.
+**ez-hifi-api** is an enhanced proxy server for Tidal. It bridges standard client capabilities with high-performance features, enabling direct lossy and lossless audio extraction with minimal overhead.
 
 ---
 
 ## ✨ Features
 
-<table>
-  <tr>
-    <td width="50%">
-      <h4>🔑 Dual Token Engine</h4>
-      <p>Supports both <b>V1</b> (DASH manifests, full account scope) and <b>V2</b> (Direct HiFi stream URLs) simultaneously.</p>
-    </td>
-    <td width="50%">
-      <h4>⚡ Unified Authentication</h4>
-      <p>Single Interactive Auth Wizard with support for built-in credentials and automatic public Gist credential pools.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h4>🛡️ Anonymity & Anti-Detection</h4>
-      <p>Per-request User-Agent rotation simulating a pool of 14+ Android devices alongside continuous proxy health checks.</p>
-    </td>
-    <td width="50%">
-      <h4>🎼 Auto Audio Processing</h4>
-      <p>Seamless <code>FFmpeg</code> integration for automatic M4A-to-FLAC conversion and multi-segment DASH manifest stitching.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h4>🔓 DRM License Proxying</h4>
-      <p>Built-in proxy engine handling Widevine DRM requests for protected high-tier streams.</p>
-    </td>
-    <td width="50%">
-      <h4>🚀 High-Throughput Pooling</h4>
-      <p>Optimized keepalive HTTP connection pools handling up to 500 parallel sockets with automated exponential retries.</p>
-    </td>
-  </tr>
-</table>
+- 🔑 **Dual Token Engine:** Supports both **V1** (DASH manifests, full account scope) and **V2** (Direct HiFi stream URLs) simultaneously.
+- ⚡ **Unified Authentication:** Interactive Auth Wizard with support for built-in credentials and automatic public Gist credential pools.
+- 🛡️ **Anonymity & Anti-Detection:** Per-request User-Agent rotation simulating a pool of 14+ Android devices alongside continuous proxy health checks.
+- 🎼 **Auto Audio Processing:** Seamless `FFmpeg` integration for automatic M4A-to-FLAC conversion and multi-segment DASH manifest stitching.
+- 🔓 **DRM License Proxying:** Built-in proxy engine handling Widevine DRM requests for protected high-tier streams.
+- 🚀 **High-Throughput Pooling:** Optimized keepalive HTTP connection pools handling up to 500 parallel sockets with automated exponential retries.
 
 ---
 
@@ -116,7 +89,7 @@ python main.py
 > 🌐 **Live Endpoint:** http://localhost:8000
 > 
 ## 🔄 Authentication
-The unified script tidal_auth.py eliminates the need for separate authentication scripts by combining all client workflows into a single entry point.
+The unified script tidal_auth.py combines all client workflows into a single entry point.
 | Mode | Target File | Granted Scope | Credential Source | Description |
 |---|---|---|---|---|
 | **1** | token.json | r_usr + w_usr + w_sub | Built-in | Full V1 API access (DASH, metadata, user actions) |
@@ -138,7 +111,8 @@ The unified script tidal_auth.py eliminates the need for separate authentication
 | **Processing Speed** | Moderate (Manifest processing required) | ⚡ Fast (Instant direct link generation) |
 ## 📥 API Endpoints
 <details open>
-<summary><h3>📥 V1 Endpoints (token.json)</h3></summary>
+<summary><b>📥 V1 Endpoints (token.json)</b></summary>
+<br />
 #### 🎵 Track & Metadata
 | Endpoint | Method | Query Parameters | Description |
 |---|---|---|---|
@@ -173,8 +147,10 @@ The unified script tidal_auth.py eliminates the need for separate authentication
 | /download/link/playlist/ | GET | id, quality, limit | JSON with playlist track URLs |
 | /download/link/multi/ | GET | ids, quality | JSON with multiple track URLs |
 </details>
+<br />
 <details>
-<summary><h3>📥 V2 Endpoints (token_hifi.json)</h3></summary>
+<summary><b>📥 V2 Endpoints (token_hifi.json)</b></summary>
+<br />
 > ℹ️ *V2 uses Tidal's direct stream URL backend. It is optimized for maximum download speed and direct audio access.*
 > 
 | Endpoint | Method | Query Parameters | Response Format |
@@ -221,8 +197,10 @@ DEV_MODE=False
 USER_AGENT=
 
 ```
+<br />
 <details>
 <summary><b>📄 Proxy File Structure (proxies.txt)</b></summary>
+<br />
 Define proxies line-by-line using standard format strings:
 ```text
 http://user:pass@hostname:port
