@@ -21,8 +21,9 @@
 - [🆚 V1 vs V2](#-v1-vs-v2)
 - [💡 Examples](#-examples)
 - [⚠️ Troubleshooting](#️-troubleshooting)
+- [📝 Notes](#-notes)
 
-
+---
 
 ## ✨ Features
 
@@ -376,7 +377,7 @@ Download Issues
 
 Issue Solution
 404 Not Found Invalid ID or region-locked
-429 Too Many Requests Wait and retry
+429 Too Many Requests Wait and retry (automatic retry with backoff)
 503 Service Unavailable Check proxy or try direct connection
 FFmpeg errors Install FFmpeg for FLAC conversion
 No manifest found Try different quality setting
@@ -434,7 +435,7 @@ HTTP connections are reused for better performance. Max 500 keepalive connection
 
 ---
 
-📝 License
+📄 License
 
 This project is for educational purposes only.
 
