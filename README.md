@@ -1,31 +1,31 @@
-# ez-hifi-api
+#ez-hifi-api
 
 <p align="center">Tidal Music Proxy with Dual Token Support (V1 + V2)</p>
 
-> [!IMPORTANT]
-> Music piracy is illegal. This project is intended for educational purposes with a valid Tidal account. Use at your own risk.
+[!IMPORTANT]
+Music piracy is illegal. This project is intended for educational purposes with a valid Tidal account. Use at your own risk.
 
 ---
 
-## 📌 Overview
+📌 Overview
 
-This is a fork of [binimum/hifi-api](https://github.com/binimum/hifi-api) with significant enhancements:
+This is a fork of binimum/hifi-api with significant enhancements:
 
-- ✅ **Dual Token Support** – V1 (`token.json`) & V2 (`token_hifi.json`)
-- ✅ **Unified Authentication** – Single script for both V1 & V2 tokens
-- ✅ **Multi-Client Support** – Automatically tries credentials from public Gist pool
-- ✅ **User-Agent Rotation** – Random Android UA for each request
-- ✅ **Proxy Rotation** – Automatic proxy health checking & rotation
-- ✅ **FFmpeg Integration** – Automatic M4A → FLAC conversion
-- ✅ **DASH Support** – V1 supports DASH manifests with segment combining
+· ✅ Dual Token Support – V1 (token.json) & V2 (token_hifi.json)
+· ✅ Unified Authentication – Single script for both V1 & V2 tokens
+· ✅ Multi-Client Support – Automatically tries credentials from public Gist pool
+· ✅ User-Agent Rotation – Random Android UA for each request
+· ✅ Proxy Rotation – Automatic proxy health checking & rotation
+· ✅ FFmpeg Integration – Automatic M4A → FLAC conversion
+· ✅ DASH Support – V1 supports DASH manifests with segment combining
 
-For all original features and endpoints (`/search/`, `/album/`, `/playlist/`, `/artist/`, `/cover/`, `/lyrics/`, `/video/`, `/track/`, `/info/`, `/recommendations/`, `/mix/`, `/artist/similar/`, `/album/similar/`, `/topvideos/`, `/trackManifests/`, `/widevine`), refer to [binimum/hifi-api](https://github.com/binimum/hifi-api).
+For all original features and endpoints (/search/, /album/, /playlist/, /artist/, /cover/, /lyrics/, /video/, /track/, /info/, /recommendations/, /mix/, /artist/similar/, /album/similar/, /topvideos/, /trackManifests/, /widevine), refer to binimum/hifi-api.
 
 ---
 
-## 🆕 New Features
+🆕 New Features
 
-### 1. Unified Authentication
+1. Unified Authentication
 
 The authentication system has been completely reworked into a single script:
 
@@ -135,7 +135,7 @@ Feature V1 V2
 Token token.json token_hifi.json
 Scope r_usr+w_usr+w_sub r_usr
 API playbackinfo + manifest streamurl direct
-DASH ✅ ❌
+DASH ✅ Yes ❌ No
 Speed Slower Faster
 Quality Exact control May upgrade
 
@@ -219,7 +219,7 @@ All proxies fail Set FALLBACK_TO_DIRECT_CONNECTION=True
 
 Enable debug logs:
 
-```env
+```bash
 DEV_MODE=True
 ```
 
@@ -238,5 +238,3 @@ DEV_MODE=True
 
 · Original: sachinsenal0x64/hifi
 · Fork: binimum/hifi-api
-
-```
