@@ -264,9 +264,9 @@ ez-hifi-api/
  * **Dolby Atmos:** Spatial audio streams contain DOLBY_ATMOS flags under mediaMetadata.tags. Query /trackManifests/ with target spatial formats to extract multi-channel streams.
  * **Connection Pooling:** Built-in connection pooling reuses HTTP sockets across requests (supporting up to 500 keepalive connections with a 30-second expiry window).
 ## 🙏 Credits
- * **Original Concept:** sachinsenal0x64/hifi
- * **API Base Fork:** binimum/hifi-api
+ * **Original Concept:** [sachinsenal0x64/hifi](https://github.com/sachinsenal0x64/hifi)
+ * **API Base Fork:** [binimum/hifi-api](https://github.com/binimum/hifi-api)
 <div align="center">
-<sub>Educational tool for homelab environments. Distributed under Educational License terms.</sub>
+<sub>Educational tool for homelab environments. Distributed under MIT License.</sub>
 </div>
 ```
