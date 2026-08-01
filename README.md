@@ -60,7 +60,7 @@ Ensure **Python 3.9+** and **FFmpeg** are installed on your system.
 
 ```bash
 # Clone repository
-git clone [https://github.com/your-username/ez-hifi-api.git](https://github.com/your-username/ez-hifi-api.git)
+git clone [https://github.com/your-username/ez-hifi-api.git](https://github.com/itenai/ez-hifi-api.git)
 cd ez-hifi-api
 
 # Install dependencies
@@ -195,10 +195,10 @@ http://hostname:port
 ### 🎵 Single Track Download
 ```bash
 # V1 Download (Strict Quality Match)
-curl -O "http://localhost:8000/download/?id=495566820&quality=LOSSLESS"
+curl -O "http://localhost:8000/download/?id=1234567890&quality=LOSSLESS"
 
 # V2 Download (HiFi Direct Stream)
-curl -O "http://localhost:8000/downloadv2/?id=495566820&quality=LOSSLESS"
+curl -O "http://localhost:8000/downloadv2/?id=1234567890&quality=LOSSLESS"
 
 ```
 ### 📦 Batch & Archive Downloads
@@ -217,10 +217,10 @@ curl -O "http://localhost:8000/download/multi/?ids=123+456+789&quality=LOSSLESS"
 ### 🔗 Extract Direct Stream Links (JSON)
 ```bash
 # Single Track Direct Link
-curl "http://localhost:8000/download/link/?id=495566820&quality=LOSSLESS"
+curl "http://localhost:8000/download/link/?id=1234567890&quality=LOSSLESS"
 
 # Album Direct Links Array
-curl "http://localhost:8000/download/link/album/?id=123456789&quality=LOSSLESS"
+curl "http://localhost:8000/download/link/album/?id=1234567890&quality=LOSSLESS"
 
 ```
 ### 🔍 Discovery & Metadata Queries
@@ -229,10 +229,10 @@ curl "http://localhost:8000/download/link/album/?id=123456789&quality=LOSSLESS"
 curl "http://localhost:8000/search/?s=Daft%20Punk&limit=10"
 
 # Fetch Track Lyrics
-curl "http://localhost:8000/lyrics/?id=495566820"
+curl "http://localhost:8000/lyrics/?id=1234567890"
 
 # Check Available Qualities on V2
-curl "http://localhost:8000/trackv2/check/?id=495566820"
+curl "http://localhost:8000/trackv2/check/?id=1234567890"
 
 ```
 ## ⚠️ Troubleshooting
